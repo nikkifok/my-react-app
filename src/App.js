@@ -1,11 +1,16 @@
 import React from "react";
-import MyComponent from "./MyComponent";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Homepage from "./Homepage";
+import PreTest from "./PreTest";
 
 function App() {
   return (
-    <div className="App">
-      <MyComponent initialCount={10} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/PreTest" element={<PreTest />} />
+      </Routes>
+    </Router>
   );
 }
 
