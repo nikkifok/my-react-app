@@ -1,4 +1,4 @@
-// PreTest.js
+// PostTest.js
 
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -7,42 +7,43 @@ import Popup from "./Popup";
 
 const questions = [
     {
-        question: "Welcome to the cybersecurity awareness pretest. Thank you for participating in this assessment. The purpose of this pretest is to gauge your current knowledge and awareness of cybersecurity threats. Your responses will help us understand your starting point before you engage with our educational game designed to improve threat detection skills. There will be a total of 6 questions.",
+        question: "Thank you for completing the game. This posttest aims to measure the improvement in your knowledge and awareness of phishing and cybersecurity threats after engaging with the game.",
         options: [ "Proceed",
+
         ],
     },
 
     {
-        question: "Q1. What is phishing?",
+        question: "Q1. Legitimate companies will never ask for sensitive information via email.",
         options: [
-            "A type of virtual fishing simulation programme",
-            "A technique used to steal personal information by pretending to be a trustworthy entity",
-            "A legitimate way for companies to collect customer data",
-            "A method to enhance computer performance",
+            "True",
+            "False",
         ],
     },
 
     {
-        question: "Q2. Where can phishing happen?",
+        question: "Q2. You receive an email from your bank asking you to confirm your account details by clicking on a link. What should you do?",
         options: [
-            "Email",
-            "Text messaging",
-            "Phone calls",
+            "Click the link and provide the requested information",
+            "Ignore the email",
+            "Forward it to your friend to ask them",
+            "Contact your bank using official contact information to verify the request",
+        ],
+    },
+
+    {
+        question: "Q3. Which of the following is a common sign of a phishing email?",
+        options: [
+            "Unexpected and unknown attachment",
+            "Poor grammar and spelling mistakes",
+            "Request for sensitive information",
             "All of the above",
         ],
     },
 
     {
-        question: "Q3. Phishing emails often create a sense of urgency to trick you into taking immediate action.",
-        options: [
-            "True",
-            "False",
-        ],
-    },
-
-    {
         question: "Q4. Is this email trustworthy? (1 of 2)",
-        image: "https://i.imgur.com/1fRvuZ7.jpeg",
+        image: "https://i.imgur.com/SL3pRgy.jpeg",
         options: [
             "Yes",
             "No"
@@ -50,8 +51,8 @@ const questions = [
     },
 
     {
-        question: "Q5. Is this email trustworthy? (2 of 2)",
-        image: "https://i.imgur.com/5FlvkpC.jpeg",
+        question: "Q5. Is this text message trustworthy? (2 of 2)",
+        image: "https://i.imgur.com/7aBi5TJ.jpeg",
         options: [
             "Yes",
             "No"
@@ -59,10 +60,10 @@ const questions = [
     },
 
     {
-        question: "Q6. A secure website URL always starts with 'http'. ",
+        question: "Q6. Did you feel like you've learned something after playing the game? ",
         options: [
-            "True",
-            "False",
+            "Yes",
+            "No",
         ],
     },
 
@@ -132,7 +133,7 @@ function PreTest() {
             )}
             {showPopup && (
                 <Popup
-                    message="Thank you for your responses. The game begins now."
+                    message="Thank you for participating."
                     onClose={handleClosePopup}
                 />
             )}
