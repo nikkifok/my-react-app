@@ -9,11 +9,15 @@ const intros = [
     },
 
     {
-        image: "/assets/BGP_2ChooseChar.png",
+        image: "/assets/BGP_2Intro.png",
     },
 
     {
-        image: "/assets/BGP_2ABegin.png",
+        image: "/assets/BGP_3Intro.png",
+    },
+
+    {
+        image: "/assets/BGP_4Intro.png",
     },
 ];
 
@@ -54,14 +58,12 @@ function Intro() {
                 className='intro-image'
             />
             <div className='navigation-button'>
-                {currentScene !== 1 && (
                     <div className= "btn" onClick={handleNext} disabled={currentScene === intros.length - 1}>
                         <img
                             src="/assets/nextbtn.png"
                             alt="Next button"
                         />
                     </div>
-                )}
             </div>
         </div>
     )
