@@ -43,7 +43,7 @@ const questions = [
 
     {
         question: "Q4. Is this email trustworthy? (1 of 2)",
-        image: "https://i.imgur.com/SL3pRgy.jpeg",
+        image: "/assets/posttest1.jpg",
         options: [
             "Yes",
             "No"
@@ -52,7 +52,7 @@ const questions = [
 
     {
         question: "Q5. Is this text message trustworthy? (2 of 2)",
-        image: "https://i.imgur.com/7aBi5TJ.jpeg",
+        image: "/assets/posttest1.jpg",
         options: [
             "Yes",
             "No"

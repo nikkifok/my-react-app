@@ -127,6 +127,36 @@ button {
   font-size: 24px;
 }
 
+.intro-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #262A55;
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.navigation-button {
+  margin-top: 20px;
+  width: 50%;
+  height: 50%;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: transparent;
+  position: fixed;
+  width: 50%;
+  height: 50%;
+  margin-top: -40%;
+  margin-left: 55%;
+
+}
+
 @media screen and (min-width: 600px) {
   .homepage-container {
     font-size: 3vw;

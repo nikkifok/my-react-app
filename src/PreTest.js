@@ -1,9 +1,11 @@
 // PreTest.js
 
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import Test from "./Test";
 import Popup from "./Popup";
+import { TestCompletionContext } from "./TestCompletionContext";
+
 
 const questions = [
     {
@@ -42,7 +44,7 @@ const questions = [
 
     {
         question: "Q4. Is this email trustworthy? (1 of 2)",
-        image: "https://i.imgur.com/1fRvuZ7.jpeg",
+        image: "/assets/pretest1.jpg",
         options: [
             "Yes",
             "No"
@@ -51,7 +53,7 @@ const questions = [
 
     {
         question: "Q5. Is this email trustworthy? (2 of 2)",
-        image: "https://i.imgur.com/5FlvkpC.jpeg",
+        image: "/assets/pretest2.jpg",
         options: [
             "Yes",
             "No"
@@ -71,6 +73,7 @@ const questions = [
 function PreTest() {
     const navigate = useNavigate();
     const location = useLocation();
+    const { testCompleted, setTestCompleted } = useContext(TestCompletionContext);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [responses, setResponses] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
@@ -82,14 +85,19 @@ function PreTest() {
         setCurrentQuestionIndex(questionIndex);
     }, [location]);
 
+    useEffect(() => {
+        if (testCompleted) {
+            navigate('/intro?scene=0', { replace: true });
+        }
+    }, [testCompleted, navigate]);
+
     const handleAnswer = (answer) => {
         setResponses([...responses, answer]);
         const nextQuestion = currentQuestionIndex + 1;
         if (nextQuestion < questions.length) {
             navigate(`?question=${nextQuestion}`);
         } else {
-            // Test is complete
-            setShowPopup(true);
+            setShowPopup(true); // Test is complete
             // To enable when database server is up
             //sendResponses([...responses, answer]);
         }
@@ -114,7 +122,12 @@ function PreTest() {
 
     const handleClosePopup = () => {
         setShowPopup(false);
+        setTestCompleted(true);
     };
+
+    if (testCompleted) {
+        return <Navigate to="/intro?scene=0" replace />;
+    }
 
     return (
         <div className="test-container">
@@ -128,7 +141,7 @@ function PreTest() {
             ) : (
                 <div className="completion-message">
                     Thank you for your responses!
-                    </div>
+                </div>
             )}
             {showPopup && (
                 <Popup
