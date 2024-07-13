@@ -1,7 +1,9 @@
 // Intro.js
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import Popup from "./Popup";
+
 
 const intros = [
     {
@@ -19,6 +21,10 @@ const intros = [
     {
         image: "/assets/BGP_4Intro.png",
     },
+
+    {
+        image: "/assets/BGP_5Intro.png",
+    },
 ];
 
 function Intro() {
@@ -27,6 +33,8 @@ function Intro() {
     const query = new URLSearchParams(location.search);
     const initialScene = parseInt(query.get('scene') || '0', 10);
     const [currentScene, setCurrentScene] = useState(initialScene);
+    const [showPopup, setShowPopup] = useState(false);
+
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
@@ -46,8 +54,18 @@ function Intro() {
     const handleNext = () => {
         if (currentScene < intros.length - 1) {
             updateScene(currentScene + 1);
+        } else if (currentScene === intros.length - 1) {
+            setShowPopup(true); 
         }
     };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+        navigate("/email?scene=0", { replace: true});
+    };
+
+    const isLastScene = currentScene === intros.length - 1;
+
 
 
     return (
@@ -58,13 +76,23 @@ function Intro() {
                 className='intro-image'
             />
             <div className='navigation-button'>
-                    <div className= "btn" onClick={handleNext} disabled={currentScene === intros.length - 1}>
-                        <img
-                            src="/assets/nextbtn.png"
-                            alt="Next button"
-                        />
-                    </div>
+                <div
+                    className={`btn ${isLastScene ? 'introend' : ''}`}
+                    onClick={handleNext}
+                >
+                    <img
+                        src="/assets/nextbtn.png"
+                        alt="Next button"
+                    />
+                </div>
             </div>
+
+            {showPopup && (
+                <Popup
+                    message="You've completed the training. Time to get to work."
+                    onClose={handleClosePopup}
+                />
+            )}
         </div>
     )
 }

@@ -19,9 +19,9 @@
 }
 
 .homepage-container {
-  background-color: #FDF9B1;
   padding: 20px;
   font-size: 2vw;
+  
 }
 
 .invisible-btn {
@@ -129,7 +129,6 @@ button {
 
 .intro-container {
   text-align: center;
-  padding: 20px;
   background-color: #262A55;
 }
 
@@ -146,6 +145,44 @@ button {
   cursor: pointer;
 }
 
+.btn.introend {
+  margin-top: -25%;
+  margin-left: 28%;
+  
+}
+
+.email-container {
+  text-align: center;
+  background-color: #262A55;
+
+}
+
+.nav-buttons {
+  justify-content: center;
+  display: block;
+}
+
+.safe, .unsafe {
+  cursor: pointer;
+}
+
+.safe {
+  margin-top: -43%;
+  margin-left: 10%;
+}
+
+.unsafe {
+  margin-top: -4.5%;
+  margin-left: 60%;
+  width: 160px;
+}
+
+.safe img, .unsafe img {
+  width: 150px;
+  height: auto;
+  margin: 10px;
+}
+
 .btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -153,6 +190,7 @@ button {
   position: absolute;
   margin-top: -33%;
   margin-left: 65%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 600px) {

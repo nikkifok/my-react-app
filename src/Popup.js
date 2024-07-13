@@ -8,7 +8,7 @@ function Popup({ message, onClose}) {
         <div className="popup-overlay">
             <div className="popup-content">
                 <h2>{message}</h2>
-                <button onClick={onClose}>Close</button>
+                <button onClick={onClose}>Proceed</button>
             </div>
         </div>
     );

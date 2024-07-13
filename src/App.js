@@ -5,6 +5,7 @@ import PreTest from "./PreTest";
 import Intro from "./Intro";
 import PostTest from "./PostTest";
 import { TestCompletionProvider, TestCompletionContext } from './TestCompletionContext';
+import Email from "./Email";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/PreTest" element={<ProtectedRoute component={<PreTest />} />} />
           <Route path="/Intro" element={<Intro />} />
           <Route path="/PostTest" element={<PostTest />} />
+          <Route path="/Email" element={<Email />} />
         </Routes>
       </Router>
     </TestCompletionProvider>
