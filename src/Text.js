@@ -53,18 +53,26 @@ function Text() {
     const query = new URLSearchParams(location.search);
     const initialScene = parseInt(query.get('scene') || '0', 10);
     const [currentScene, setCurrentScene] = useState(initialScene);
+    const [showStartPopup, setShowStartPopup] = useState(false);
     const [showRulebookPopup, setShowRulebookPopup] = useState(false);
     const [showTimeoutPopup, setShowTimeoutPopup] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [isTimerPlaying, setIsTimerPlaying] = useState(true);
     const [key, setKey] = useState(0); // To reset the timer
     const [showEndPopup, setShowEndPopup] = useState(false);
+    const [showQuizPopup, setShowQuizPopup] = useState(false);
+
 
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
         const scene = parseInt(query.get('scene') || '0', 10);
         setCurrentScene(scene);
+
+        if (scene === 1) {
+            setShowStartPopup(true);
+            setIsTimerPlaying(false);
+        }
     }, [location.search]);
 
     useEffect(() => {
@@ -78,10 +86,19 @@ function Text() {
 
     const handleNext = () => {
         if (currentScene < texts.length - 1) {
-            updateScene(currentScene + 1);
+            if (currentScene === 3) {
+                setShowEndPopup(true);
+            } else {   
+                updateScene(currentScene + 1);
+            }
         } else {
-            setShowEndPopup(true);
+            setShowQuizPopup(true);
         }
+    };
+
+    const handleCloseStartPopup = () => {
+        setShowStartPopup(false);
+        setIsTimerPlaying(true);
     };
 
     const openRulebookPopup = () => {
@@ -114,10 +131,6 @@ function Text() {
         setKey(prevKey => prevKey + 1); // Reset the timer by changing the key
         setIsTimerPlaying(true);
     };
-    
-    const openEndPopup = () => {
-        setShowEndPopup(true); 
-    };
 
     const handleCloseEndPopup = () => {
         setShowEndPopup(false);
@@ -125,7 +138,13 @@ function Text() {
 
     };
 
-    const isLastScene = currentScene === texts.length - 1;
+    const handleCloseQuizPopup = () => {
+        setShowQuizPopup(false);
+        navigate("/quiz?scene=4", { replace: true});
+    };
+
+    const isFirstScene = currentScene === 0;
+    const isLastScene = currentScene === 4;
 
     return (
         <div className='email-container'>
@@ -135,9 +154,21 @@ function Text() {
                 className='intro-image'
             />
 
-            {(currentScene !== 0 && currentScene !==4) && (
-                <>
-                    <div className='nav-buttons'>
+            <div className='nav-buttons'>
+                {isFirstScene || isLastScene ? (
+                    <div className='navigation-button'>
+                        <div
+                            className={`endemail ${isLastScene}`}
+                            onClick={handleNext}
+                        >
+                            <img
+                                src="/assets/nextbtn.png"
+                                alt="Next button"
+                            />
+                        </div>
+                    </div>     
+                ) : (
+                    <>
                         <div
                             className='safe'
                             onClick={openRulebookPopup}
@@ -151,67 +182,56 @@ function Text() {
                             className='unsafe'
                             onClick={handleNext}
                         >
-
                             <img
                                 src="/assets/unsafebtn.png"
                                 alt="Report Unsafe button"
                             />
                         </div>
-                    </div>
+                    </>
+                )}
+            </div>
 
-                    <div className='rulebook-button-container'>
-                        <img
-                            src="/assets/rulebookbtn.png"
-                            alt="Rulebook button"
-                            className='rulebook-button'
-                            onClick={openRulebook}
-                        />
-                    </div>
-
-                    <div className="App">
-                        <div className="timer-wrapper">
-                            <CountdownCircleTimer
-                                key={key} // Key to control the reset
-                                isPlaying={isTimerPlaying}
-                                isSmoothColorTransition={true}
-                                duration={20}
-                                colors={["#3257FF", "#F7B801", "#A30000", "#A30000"]}
-                                colorsTime={[10, 6, 3, 0]}
-                                onComplete={() => {
-                                    handleTimesUp();
-                                    return { shouldRepeat: false, delay: 1};
-                                }}
-                                size={140}
-                                strokeWidth={6}
-                            >
-                                {renderTime}
-                            </CountdownCircleTimer>
-                        </div>
-                    </div>
-                </>
+            {!isFirstScene && !isLastScene && (
+                <div className='rulebook-button-container'>
+                    <img
+                        src="/assets/rulebookbtn.png"
+                        alt="Rulebook button"
+                        className='rulebook-button'
+                        onClick={openRulebook}
+                    />
+                </div>
             )}
 
-            {(currentScene === 0 || currentScene === 4) && (
-                <div className='navigation-button'>
-                    <div
-                        className={`endemail ${isLastScene}`}
-                        onClick={handleNext}
-                    >
-                        <img
-                            src="/assets/nextbtn.png"
-                            alt="Next button"
-                        />
+            {!isFirstScene && !isLastScene && (
+                <div className="App">
+                    <div className="timer-wrapper">
+                        <CountdownCircleTimer
+                            key={key} // Key to control the reset
+                            isPlaying={isTimerPlaying}
+                            isSmoothColorTransition={true}
+                            duration={20}
+                            colors={["#3257FF", "#F7B801", "#A30000", "#A30000"]}
+                            colorsTime={[10, 6, 3, 0]}
+                            onComplete={() => {
+                                handleTimesUp();
+                                return { shouldRepeat: false, delay: 1};
+                            }}
+                            size={140}
+                            strokeWidth={6}
+                        >
+                            {renderTime}
+                        </CountdownCircleTimer>
                     </div>
-                </div>          
+                </div>
             )}
 
-
-            {showRulebookPopup && (
+            {showStartPopup && (
                 <Popup
-                    message="Hold up. Something's suspicious. Check the Rulebook."
-                    onClose={closeRulebookPopup}
+                    message="Prepare yourself and start when you're ready. Reminder: opening the Rulebook pauses the timer."
+                    onClose={handleCloseStartPopup}
                 />
             )}
+         
 
             {showTimeoutPopup && (
                 <Popup
@@ -224,6 +244,13 @@ function Text() {
                 <Popup
                     message="Great job completing Task Two!"
                     onClose={handleCloseEndPopup}
+                />
+            )}
+
+            {showQuizPopup && (
+                <Popup
+                    message="Well done, you've proven your skills. Now, on to the final task."
+                    onClose={handleCloseQuizPopup}
                 />
             )}
 

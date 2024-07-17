@@ -57,6 +57,7 @@ function Email() {
     const query = new URLSearchParams(location.search);
     const initialScene = parseInt(query.get('scene') || '0', 10);
     const [currentScene, setCurrentScene] = useState(initialScene);
+    const [showStartPopup, setShowStartPopup] = useState(false);
     const [showRulebookPopup, setShowRulebookPopup] = useState(false);
     const [showTimeoutPopup, setShowTimeoutPopup] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -69,6 +70,11 @@ function Email() {
         const query = new URLSearchParams(location.search);
         const scene = parseInt(query.get('scene') || '0', 10);
         setCurrentScene(scene);
+
+        if (scene === 0) {
+            setShowStartPopup(true);
+            setIsTimerPlaying(false);
+        }
     }, [location.search]);
 
     useEffect(() => {
@@ -86,6 +92,11 @@ function Email() {
         } else {
             setShowEndPopup(true);
         }
+    };
+
+    const handleCloseStartPopup = () => {
+        setShowStartPopup(false);
+        setIsTimerPlaying(true);
     };
 
     const openRulebookPopup = () => {
@@ -189,6 +200,13 @@ function Email() {
                 </div>
             
             </div>
+
+            {showStartPopup && (
+                <Popup
+                    message="When you're ready, click below to begin and start the timer."
+                    onClose={handleCloseStartPopup}
+                />
+            )}
 
             {showRulebookPopup && (
                 <Popup
