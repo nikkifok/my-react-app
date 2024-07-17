@@ -1,4 +1,4 @@
-// Email.js
+// Text.js
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -24,34 +24,30 @@ const renderTime = ({ remainingTime }) => {
     );
   };
 
-const emails = [
+const texts = [
 
     {
-        image: "/assets/BGP_6Email1.png",
+        image: "/assets/BGP_7Text0.png",
     },
 
     {
-        image: "/assets/BGP_6Email2.png",
+        image: "/assets/BGP_7Text1.png",
     },
 
     {
-        image: "/assets/BGP_6Email3.png",
+        image: "/assets/BGP_7Text2.png",
     },
 
     {
-        image: "/assets/BGP_6Email4.png",
+        image: "/assets/BGP_7Text3.png",
     },
 
     {
-        image: "/assets/BGP_6Email5.png",
-    },
-
-    {
-        image: "/assets/BGP_6Email6.png",
+        image: "/assets/BGP_7Text4.png",
     },
 ];
 
-function Email() {
+function Text() {
     const navigate = useNavigate();
     const location = useLocation();
     const query = new URLSearchParams(location.search);
@@ -77,11 +73,11 @@ function Email() {
     
     const updateScene = (sceneIndex) => {
         setCurrentScene(sceneIndex);
-        navigate(`/email?scene=${sceneIndex}`);
+        navigate(`/text?scene=${sceneIndex}`);
     };
 
     const handleNext = () => {
-        if (currentScene < emails.length - 1) {
+        if (currentScene < texts.length - 1) {
             updateScene(currentScene + 1);
         } else {
             setShowEndPopup(true);
@@ -114,81 +110,101 @@ function Email() {
     const handleCloseTimeoutPopup = () => {
         setShowTimeoutPopup(false);
         setCurrentScene(0);
-        navigate(`/email?scene=0`);
+        navigate(`/text?scene=0`);
         setKey(prevKey => prevKey + 1); // Reset the timer by changing the key
         setIsTimerPlaying(true);
     };
     
     const openEndPopup = () => {
         setShowEndPopup(true); 
-    }
+    };
 
     const handleCloseEndPopup = () => {
         setShowEndPopup(false);
-        navigate("/text?scene=0", { replace: true});
+        navigate("/text?scene=4", { replace: true});
 
     };
+
+    const isLastScene = currentScene === texts.length - 1;
 
     return (
         <div className='email-container'>
             <img
-                src={emails[currentScene].image}
-                alt={`Email ${currentScene + 1}`}
+                src={texts[currentScene].image}
+                alt={`Text ${currentScene + 1}`}
                 className='intro-image'
             />
 
-            <div className='nav-buttons'>
-                <div
-                    className='safe'
-                    onClick={openRulebookPopup}
-                >
-                    <img
-                        src="/assets/safebtn.png"
-                        alt="Mark Safe button"
-                    />
-                </div>
-                <div
-                    className='unsafe'
-                    onClick={handleNext}
-                >
+            {(currentScene !== 0 && currentScene !==4) && (
+                <>
+                    <div className='nav-buttons'>
+                        <div
+                            className='safe'
+                            onClick={openRulebookPopup}
+                        >
+                            <img
+                                src="/assets/safebtn.png"
+                                alt="Mark Safe button"
+                            />
+                        </div>
+                        <div
+                            className='unsafe'
+                            onClick={handleNext}
+                        >
 
-                    <img
-                        src="/assets/unsafebtn.png"
-                        alt="Report Unsafe button"
-                    />
-                </div>
-            </div>
+                            <img
+                                src="/assets/unsafebtn.png"
+                                alt="Report Unsafe button"
+                            />
+                        </div>
+                    </div>
 
-            <div className='rulebook-button-container'>
-                <img
-                    src="/assets/rulebookbtn.png"
-                    alt="Rulebook button"
-                    className='rulebook-button'
-                    onClick={openRulebook}
-                />
-            </div>
+                    <div className='rulebook-button-container'>
+                        <img
+                            src="/assets/rulebookbtn.png"
+                            alt="Rulebook button"
+                            className='rulebook-button'
+                            onClick={openRulebook}
+                        />
+                    </div>
 
-            <div className="App">
-                <div className="timer-wrapper">
-                <CountdownCircleTimer
-                    key={key} // Key to control the reset
-                    isPlaying={isTimerPlaying}
-                    isSmoothColorTransition={true}
-                    duration={30}
-                    colors={["#3257FF", "#F7B801", "#A30000", "#A30000"]}
-                    colorsTime={[10, 6, 3, 0]}
-                    onComplete={() => {
-                        handleTimesUp();
-                        return { shouldRepeat: false, delay: 1};
-                    }}
-                    size={140}
-                    strokeWidth={6}
-                >
-                    {renderTime}
-                </CountdownCircleTimer>
-                </div>
-            
-            </div>
+                    <div className="App">
+                        <div className="timer-wrapper">
+                            <CountdownCircleTimer
+                                key={key} // Key to control the reset
+                                isPlaying={isTimerPlaying}
+                                isSmoothColorTransition={true}
+                                duration={20}
+                                colors={["#3257FF", "#F7B801", "#A30000", "#A30000"]}
+                                colorsTime={[10, 6, 3, 0]}
+                                onComplete={() => {
+                                    handleTimesUp();
+                                    return { shouldRepeat: false, delay: 1};
+                                }}
+                                size={140}
+                                strokeWidth={6}
+                            >
+                                {renderTime}
+                            </CountdownCircleTimer>
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {(currentScene === 0 || currentScene === 4) && (
+                <div className='navigation-button'>
+                    <div
+                        className={`endemail ${isLastScene}`}
+                        onClick={handleNext}
+                    >
+                        <img
+                            src="/assets/nextbtn.png"
+                            alt="Next button"
+                        />
+                    </div>
+                </div>          
+            )}
+
 
             {showRulebookPopup && (
                 <Popup
@@ -206,7 +222,7 @@ function Email() {
 
             {showEndPopup && (
                 <Popup
-                    message="Great job completing Task One!"
+                    message="Great job completing Task Two!"
                     onClose={handleCloseEndPopup}
                 />
             )}
@@ -221,4 +237,4 @@ function Email() {
 }
   
 
-export default Email;
+export default Text;

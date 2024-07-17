@@ -151,6 +151,11 @@ button {
   
 }
 
+.endemail {
+  margin-top: -38%;
+  margin-left: 130%;
+}
+
 .email-container {
   text-align: center;
   background-color: #262A55;
