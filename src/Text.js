@@ -61,8 +61,7 @@ function Text() {
     const [key, setKey] = useState(0); // To reset the timer
     const [showEndPopup, setShowEndPopup] = useState(false);
     const [showQuizPopup, setShowQuizPopup] = useState(false);
-
-
+    const [items, setItems] = useState(texts);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
@@ -103,7 +102,7 @@ function Text() {
 
     const openRulebookPopup = () => {
         setShowRulebookPopup(true); 
-    }
+    };
 
     const closeRulebookPopup = () => {
         setShowRulebookPopup(false);
@@ -140,7 +139,7 @@ function Text() {
 
     const handleCloseQuizPopup = () => {
         setShowQuizPopup(false);
-        navigate("/quiz?scene=4", { replace: true});
+        navigate("/quiz?scene=0", { replace: true});
     };
 
     const isFirstScene = currentScene === 0;
@@ -258,9 +257,7 @@ function Text() {
                 <Rulebook />
             </Modal>
         </div>
-
-        
-    )
+    );
 }
   
 

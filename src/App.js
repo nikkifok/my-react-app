@@ -7,7 +7,7 @@ import PostTest from "./PostTest";
 import { TestCompletionProvider, TestCompletionContext } from './TestCompletionContext';
 import Email from "./Email";
 import Text from "./Text";
-
+import Quiz from "./Quiz";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/PostTest" element={<PostTest />} />
           <Route path="/Email" element={<Email />} />
           <Route path="/Text" element={<Text />} />
+          <Route path="/Quiz" element={<Quiz />} />
         </Routes>
       </Router>
     </TestCompletionProvider>
