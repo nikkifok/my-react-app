@@ -10,7 +10,6 @@ function Test({ question, options, image, onAnswer}) {
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
-    const [formTouched, setFormTouched] = useState(false);
     const [showError, setShowError] = useState(false);
 
     useEffect(() => {
@@ -49,7 +48,6 @@ function Test({ question, options, image, onAnswer}) {
     };
 
     const handleProceed = () => {
-        setFormTouched(true);
         if (!isFormValid) {
             setShowError(true);
         } else {

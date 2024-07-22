@@ -130,10 +130,6 @@ function Email() {
         setIsTimerPlaying(true);
     };
     
-    const openEndPopup = () => {
-        setShowEndPopup(true); 
-    }
-
     const handleCloseEndPopup = () => {
         setShowEndPopup(false);
         navigate("/text?scene=0", { replace: true});

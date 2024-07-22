@@ -1,7 +1,7 @@
 // Intro.js
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Popup from "./Popup";
 
 
