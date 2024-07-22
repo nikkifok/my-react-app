@@ -13,15 +13,15 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-  max-width: 100%;
+  width: 100%;
   height:auto;
   position: fixed;
+  background-color: transparent;
 }
 
 .homepage-container {
-  padding: 20px;
   font-size: 2vw;
-  
+  background-color: transparent;
 }
 
 .invisible-btn {
@@ -33,15 +33,20 @@
   opacity: 100%;
   cursor: pointer;
   background-color: transparent;
+  font-weight: bold;
   font-size: 2vw;
   font-family: 'Courier New', Courier, monospace;
   border: none;
   text-decoration: underline;
-  color: black;
+  color: white;
+}
+
+body {
+  background-color: #A1C3F8;
 }
 
 .test-container {
-  background-color: #FDF9B1;
+  background-color: #A1C3F8;
   padding: 100px;
   border-radius: 10px;
   max-width: 900px;
@@ -60,6 +65,10 @@
   text-align: center;
 }
 
+.dob-container select {
+  font-size: medium;
+}
+
 .error-message {
   color: red;
   font-size: 14px;
@@ -72,7 +81,7 @@
 
 .question-text {
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center;
 }
 
@@ -83,8 +92,8 @@
 }
 
 .answer-section button {
-  background-color:gainsboro;
-  color: black;
+  background-color:rgb(20, 24, 87);
+  color: whitesmoke;
   padding: 30px 20px;
   width: 100%;
   margin: 8px;
@@ -95,7 +104,7 @@
 }
 
 .answer-section button:hover {
-  background-color: #45a049;
+  background-color: rgb(15, 155, 189)
 }
 
 label {
@@ -110,7 +119,9 @@ input {
   margin-top: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  font-size: medium;
 }
+
 
 button {
   background-color: #4caf50;

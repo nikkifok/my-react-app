@@ -1,11 +1,12 @@
 .quiz-container {
-    background-image: url(/public/assets/BGP_8TQuiz1.png);
+    background-image: url(/public/assets/BGP_8Quiz1.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Keeps the background image fixed */
-    padding: 20px;
+    padding: 60px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
+    flex-direction: column;
     justify-content: center; /* Centers the quiz horizontally */
     align-items: center; /* Centers the quiz vertically */
     height: 100vh; /* Ensures the container takes the full height of the viewport */
@@ -16,9 +17,21 @@
     justify-content: center;
     background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for readability */
     border-radius: 10px;
-    padding: 20px; /* Increased padding for more space */
+    padding: 15px; /* Increased padding for more space */
     width: 1080px;
     margin: auto;
+    margin-top: 2px;
+}
+
+.quiz-container h1 {
+    margin-bottom:20px;
+    font-size: 24px;
+    color: yellowgreen;
+    text-align: center;
+    width: 100%;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .categories {
@@ -61,7 +74,7 @@
 .item {
     background-color: #e1e7f0;
     font-weight: normal; /* Ensure items are not bold */
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .dropzone {

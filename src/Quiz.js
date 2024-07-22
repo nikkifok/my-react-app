@@ -82,21 +82,22 @@ import './Quiz.css';
 
     return (
         <div className="quiz-container">
-        <div className="quiz">
-            <div className="categories">
-                {categories.map((category) => (
-                    <div
-                        key={category.id}
-                        id={category.id}
-                        className="category"
-                        onDragOver={onDragOver}
-                        onDrop={(e) => onDrop(e, category.id)}
-                    >
-                        <h3>{category.name}</h3>
-                        <div className="dropzone"></div>
-                    </div>
-                ))}
-            </div>
+            <h1>Drag and drop the phishing red flags into the correct categories</h1>
+            <div className="quiz">
+                <div className="categories">
+                    {categories.map((category) => (
+                        <div
+                            key={category.id}
+                            id={category.id}
+                            className="category"
+                            onDragOver={onDragOver}
+                            onDrop={(e) => onDrop(e, category.id)}
+                        >
+                            <h3>{category.name}</h3>
+                            <div className="dropzone"></div>
+                        </div>
+                    ))}
+                </div>
             <div className="items">
                 {items.map((item) => (
                     <div

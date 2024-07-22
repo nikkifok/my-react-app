@@ -1,9 +1,10 @@
 // PostTest.js
 
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import Test from "./Test";
 import Popup from "./Popup";
+import { PostTestCompletionContext } from "./PostTestCompletionContext";
 
 const questions = [
     {
@@ -52,7 +53,7 @@ const questions = [
 
     {
         question: "Q5. Is this text message trustworthy? (2 of 2)",
-        image: "/assets/posttest1.jpg",
+        image: "/assets/posttest2.jpeg",
         options: [
             "Yes",
             "No"
@@ -69,9 +70,10 @@ const questions = [
 
 ];
 
-function PreTest() {
+function PostTest() {
     const navigate = useNavigate();
     const location = useLocation();
+    const { postTestCompleted, setPostTestCompleted } = useContext(PostTestCompletionContext);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [responses, setResponses] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
@@ -82,6 +84,29 @@ function PreTest() {
         const questionIndex = parseInt(query.get("question") || "0", 10);
         setCurrentQuestionIndex(questionIndex);
     }, [location]);
+
+    useEffect(() => {
+        if (postTestCompleted) {
+            navigate('/', { replace: true });
+        }
+    }, [postTestCompleted, navigate]);
+
+    useEffect(() => {
+        // Push a new state to the history stack to prevent back navigation
+        window.history.pushState(null, document.title, window.location.href);
+
+        const handlePopState = (event) => {
+            event.preventDefault();
+            // Navigate back to the PostTest component
+            navigate("/PostTest", { replace: true });
+        };
+
+        window.addEventListener("popstate", handlePopState);
+
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
+    }, [navigate]);
 
     const handleAnswer = (answer) => {
         setResponses([...responses, answer]);
@@ -115,6 +140,7 @@ function PreTest() {
 
     const handleClosePopup = () => {
         setShowPopup(false);
+        setPostTestCompleted(true);
     };
 
     return (
@@ -133,7 +159,7 @@ function PreTest() {
             )}
             {showPopup && (
                 <Popup
-                    message="Thank you for participating."
+                    message="Thank you for your participation."
                     onClose={handleClosePopup}
                 />
             )}
@@ -141,4 +167,4 @@ function PreTest() {
     );
 }
 
-export default PreTest;
+export default PostTest;

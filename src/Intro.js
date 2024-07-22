@@ -7,7 +7,7 @@ import Popup from "./Popup";
 
 const intros = [
     {
-        image: "/assets/BFP_1Intro.png",
+        image: "/assets/BGP_1Intro.png",
     },
 
     {
