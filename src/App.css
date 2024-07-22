@@ -197,6 +197,7 @@ button {
   width: 150px;
   height: auto;
   margin: 10px;
+  margin-top: 4px;
 }
 
 .btn {
