@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import BGM from "./BGM";
-import Homepage from "./Homepage";
-import PreTest from "./PreTest";
-import Intro from "./Intro";
-import PostTest from "./PostTest";
-import { TestCompletionProvider, TestCompletionContext } from './TestCompletionContext';
-import { PostTestCompletionProvider, PostTestCompletionContext } from "./PostTestCompletionContext";
-import Email from "./Email";
-import Text from "./Text";
-import Quiz from "./Quiz";
-import End from "./End";
+import BGM from "./components/BGM";
+import Homepage from "./components/Homepage";
+import PreTest from "./components/PreTest";
+import Intro from "./components/Intro";
+import PostTest from "./components/PostTest";
+import { TestCompletionProvider, TestCompletionContext } from './components/TestCompletionContext';
+import { PostTestCompletionProvider, PostTestCompletionContext } from "./components/PostTestCompletionContext";
+import Email from "./components/Email";
+import Text from "./components/Text";
+import Quiz from "./components/Quiz";
+import End from "./components/End";
 
 function App() {
   const [shouldPlayMusic, setShouldPlayMusic] = useState(false);

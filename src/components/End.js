@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Popup from "./Popup";
-import './App.css';
+import '../App.css';
 
 const ending = [
 
