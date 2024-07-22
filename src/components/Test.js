@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-function Test({ question, options, image, onAnswer, type, inputType}) {
+function Test({ question, options, image, onAnswer, type, inputType }) {
     const [selectedOption, setSelectedOption] = useState(null);
     const [yesText, setYesText] = useState('');
     const [noText, setNoText] = useState('');
@@ -27,7 +27,7 @@ function Test({ question, options, image, onAnswer, type, inputType}) {
     const handleOptionClick = (option) => {
         setSelectedOption(option);
         if (option !== "Yes" && option !== "No") {
-            onAnswer(option);  // Immediate submit for questions without text fields
+            onAnswer(String(option));  // Immediate submit for questions without text fields
         }
     };
     
@@ -41,9 +41,9 @@ function Test({ question, options, image, onAnswer, type, inputType}) {
 
     const handleSubmit = () => {
         if (selectedOption === "Yes") {
-          onAnswer({ option: selectedOption, text: yesText });
+          onAnswer(JSON.stringify({ option: selectedOption, text: yesText }));
         } else if (selectedOption === "No") {
-          onAnswer({ option: selectedOption, text: noText });
+          onAnswer(JSON.stringify({ option: selectedOption, text: noText }));
         }
     };
 
@@ -52,7 +52,7 @@ function Test({ question, options, image, onAnswer, type, inputType}) {
             setShowError(true);
         } else {
             const dob = `${year}-${month}-${day}`;
-            onAnswer({ initials, dob });
+            onAnswer(JSON.stringify({ initials, dob }));
             setShowError(false);
         }
     };
@@ -154,9 +154,9 @@ function Test({ question, options, image, onAnswer, type, inputType}) {
                 <div className="question-text">{question}</div>  
                 <input
                     type={inputType}
-                    onChange={(e) => onAnswer(e.target.value)}
+                    onChange={(e) => onAnswer(String(e.target.value))}
                 />
-                <button onClick={() => onAnswer(selectedOption)}>Next</button>
+                <button onClick={() => onAnswer(String(selectedOption))}>Next</button>
             </div>
         )}
     </div>

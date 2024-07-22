@@ -15,18 +15,6 @@ const questions = [
     },
 
     {
-        question: "Please enter your Date of Birth:",
-        type: "input",
-        inputType: "date"
-    },
-
-    {
-        question: "Please enter your name:",
-        type: "input",
-        inputType: "text"
-    },
-
-    {
         question: "Q1. What is phishing?",
         options: [
             "A type of virtual fishing simulation programme",
