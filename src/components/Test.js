@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-function Test({ question, options, image, onAnswer}) {
+function Test({ question, options, image, onAnswer, type, inputType}) {
     const [selectedOption, setSelectedOption] = useState(null);
     const [yesText, setYesText] = useState('');
     const [noText, setNoText] = useState('');
@@ -71,7 +71,7 @@ function Test({ question, options, image, onAnswer}) {
 
     return (
         <div className="question-section">
-            {question === "Welcome to the cybersecurity awareness pretest. Thank you for participating in this assessment. The purpose of this pretest is to gauge your current knowledge and awareness of cybersecurity threats. Your responses will help us understand your starting point before you engage with our educational game designed to improve threat detection skills. There will be a total of 6 questions." ? (
+            {type === "info" && (
                 <div className="form">
                     <div className="question-text">{question}</div>
                     <label>
@@ -108,7 +108,8 @@ function Test({ question, options, image, onAnswer}) {
                     <button onClick={handleProceed}>Proceed</button>
                     {showError && <p className="error-message">Please enter information to proceed</p>}
                 </div>
-            ) : (
+            )}
+            {type === "multiple-choice" && (
             <>
                 <div className="question-text">{question}</div>
                 {image && <img src={image} alt="Question related visual" className="question-image" />}
@@ -146,7 +147,18 @@ function Test({ question, options, image, onAnswer}) {
                     </div>
                 )}
             </>
-        )}   
+        )}
+
+        {type === "inout" && (
+            <div>
+                <div className="question-text">{question}</div>  
+                <input
+                    type={inputType}
+                    onChange={(e) => onAnswer(e.target.value)}
+                />
+                <button onClick={() => onAnswer(selectedOption)}>Next</button>
+            </div>
+        )}
     </div>
     );
 }

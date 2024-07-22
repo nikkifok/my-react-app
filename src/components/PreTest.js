@@ -113,9 +113,9 @@ function PreTest() {
             body: JSON.stringify({ responses }),
           });
           const data = await res.text();
-          console.log(data);
+            console.log(data);
         } catch (error) {
-          console.error('Error sending responses:', error);
+            console.error('Error sending responses:', error);
         }
       };
 
@@ -136,6 +136,8 @@ function PreTest() {
                     options={questions[currentQuestionIndex].options}
                     image={questions[currentQuestionIndex].image}
                     onAnswer={handleAnswer}
+                    type={questions[currentQuestionIndex].type}
+                    inputType={questions[currentQuestionIndex].inputType}
                 />
             ) : (
                 <div className="completion-message">

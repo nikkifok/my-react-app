@@ -150,6 +150,8 @@ function PostTest() {
                     options={questions[currentQuestionIndex].options}
                     image={questions[currentQuestionIndex].image}
                     onAnswer={handleAnswer}
+                    type={questions[currentQuestionIndex].type}
+                    inputType={questions[currentQuestionIndex].inputType}
                 />
             ) : (
                 <div className="completion-message">
