@@ -92,20 +92,20 @@ function PreTest() {
     }, [testCompleted, navigate]);
 
     const handleAnswer = (answer) => {
-        setResponses([...responses, answer]);
+        const updatedResponses = [...responses, answer];
+        setResponses(updatedResponses);
         const nextQuestion = currentQuestionIndex + 1;
         if (nextQuestion < questions.length) {
             navigate(`?question=${nextQuestion}`);
         } else {
             setShowPopup(true); // Test is complete
-            // To enable when database server is up
-            //sendResponses([...responses, answer]);
+            sendResponses(updatedResponses); // Enabled for database server is up
         }
     };
 
-    /** const sendResponses = async (responses) => {
+    const sendResponses = async (responses) => {
         try {
-          const res = await fetch('https://your-heroku-app.herokuapp.com/submit', {
+          const res = await fetch('/api/submit', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -118,7 +118,6 @@ function PreTest() {
           console.error('Error sending responses:', error);
         }
       };
-      **/
 
     const handleClosePopup = () => {
         setShowPopup(false);

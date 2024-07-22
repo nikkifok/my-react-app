@@ -109,21 +109,21 @@ function PostTest() {
     }, [navigate]);
 
     const handleAnswer = (answer) => {
-        setResponses([...responses, answer]);
+        const updatedResponses = [...responses, answer];
+        setResponses(updatedResponses);
         const nextQuestion = currentQuestionIndex + 1;
         if (nextQuestion < questions.length) {
             navigate(`?question=${nextQuestion}`);
         } else {
-            // Test is complete
-            setShowPopup(true);
-            // To enable when database server is up
-            //sendResponses([...responses, answer]);
+            setShowPopup(true); // Test is complete
+            sendResponses(updatedResponses); // Enabled for database server is up
+
         }
     };
 
-    /** const sendResponses = async (responses) => {
+    const sendResponses = async (responses) => {
         try {
-          const res = await fetch('https://your-heroku-app.herokuapp.com/submit', {
+          const res = await fetch('/api/submit', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -131,12 +131,11 @@ function PostTest() {
             body: JSON.stringify({ responses }),
           });
           const data = await res.text();
-          console.log(data);
+            console.log(data);
         } catch (error) {
-          console.error('Error sending responses:', error);
+            console.error('Error sending responses:', error);
         }
-      };
-      **/
+    };
 
     const handleClosePopup = () => {
         setShowPopup(false);
