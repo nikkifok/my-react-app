@@ -10,8 +10,20 @@ import { TestCompletionContext } from "./TestCompletionContext";
 const questions = [
     {
         question: "Welcome to the cybersecurity awareness pretest. Thank you for participating in this assessment. The purpose of this pretest is to gauge your current knowledge and awareness of cybersecurity threats. Your responses will help us understand your starting point before you engage with our educational game designed to improve threat detection skills. There will be a total of 6 questions.",
-        options: [ "Proceed",
-        ],
+        options: [ "Proceed"],
+        type: "info"
+    },
+
+    {
+        question: "Please enter your Date of Birth:",
+        type: "input",
+        inputType: "date"
+    },
+
+    {
+        question: "Please enter your name:",
+        type: "input",
+        inputType: "text"
     },
 
     {
@@ -22,6 +34,7 @@ const questions = [
             "A legitimate way for companies to collect customer data",
             "A method to enhance computer performance",
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -32,6 +45,7 @@ const questions = [
             "Phone calls",
             "All of the above",
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -40,6 +54,7 @@ const questions = [
             "True",
             "False",
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -49,6 +64,7 @@ const questions = [
             "Yes",
             "No"
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -58,6 +74,7 @@ const questions = [
             "Yes",
             "No"
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -66,6 +83,7 @@ const questions = [
             "True",
             "False",
         ],
+        type: "multiple-choice"
     },
 
 ];

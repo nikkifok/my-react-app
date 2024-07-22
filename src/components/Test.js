@@ -149,7 +149,7 @@ function Test({ question, options, image, onAnswer, type, inputType}) {
             </>
         )}
 
-        {type === "inout" && (
+        {type === "input" && (
             <div>
                 <div className="question-text">{question}</div>  
                 <input

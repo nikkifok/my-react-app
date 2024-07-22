@@ -9,9 +9,8 @@ import { PostTestCompletionContext } from "./PostTestCompletionContext";
 const questions = [
     {
         question: "Thank you for completing the game. This posttest aims to measure the improvement in your knowledge and awareness of phishing and cybersecurity threats after engaging with the game.",
-        options: [ "Proceed",
-
-        ],
+        options: ["Proceed"],
+        type: "info"
     },
 
     {
@@ -20,6 +19,7 @@ const questions = [
             "True",
             "False",
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -30,6 +30,7 @@ const questions = [
             "Forward it to your friend to ask them",
             "Contact your bank using official contact information to verify the request",
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -40,6 +41,7 @@ const questions = [
             "Request for sensitive information",
             "All of the above",
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -49,6 +51,7 @@ const questions = [
             "Yes",
             "No"
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -58,6 +61,7 @@ const questions = [
             "Yes",
             "No"
         ],
+        type: "multiple-choice"
     },
 
     {
@@ -66,6 +70,7 @@ const questions = [
             "Yes",
             "No",
         ],
+        type: "multiple-choice"
     },
 
 ];
