@@ -7,6 +7,7 @@ import Modal from './Modal';
 import Rulebook from './Rulebook';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
+import "../App.css";
 import "./Timer.css";
 
 

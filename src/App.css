@@ -238,3 +238,43 @@ button {
     width: 160px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .navigation-button{
+      margin: 0px;
+      width: 100%;
+  }
+
+  .btn{
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: transparent;
+      position:static;
+      margin: 0px;
+      cursor: pointer;
+  }
+
+  .btn img{
+      width:30%;
+      height: auto;
+  }
+
+  .btn.introend{
+      margin:0px;
+  }
+
+  .btn.introend img{
+      width:30%;
+      height: auto;
+  }
+
+  .endemail{
+      margin:0px;
+  }
+
+  .endemail img{
+      width:30%;
+      height: auto;
+      padding:10px 20px;
+  }
+}

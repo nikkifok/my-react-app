@@ -90,3 +90,40 @@
 .dropzone:hover {
     background-color: rgba(0, 123, 255, 0.2); /* Darker background on hover */
 }
+
+@media screen and (max-width: 480px) {
+    .quiz-container {
+        padding: 20px;
+        height: auto; /* Allow the container height to adjust */
+    }
+
+    .quiz {
+        width: 100%; /* Make quiz take full width on mobile */
+        padding: 10px;
+    }
+
+    .quiz-container h1 {
+        font-size: 20px; /* Adjust font size for better readability on mobile */
+        padding: 10px;
+    }
+
+    .categories, .items {
+        width: 100%; /* Make categories and items take full width */
+        flex-direction: column;
+    }
+
+    .category, .item {
+        margin: 5px 0;
+        padding: 8px;
+    }
+
+    .category h3 {
+        font-size: 14px; /* Adjust font size for better readability on mobile */
+        padding: 8px;
+    }
+
+    .dropzone {
+        min-height: 80px; /* Reduce minimum height for drop zones */
+        padding: 8px;
+    }
+}

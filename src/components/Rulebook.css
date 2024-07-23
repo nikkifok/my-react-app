@@ -76,4 +76,31 @@
       width: 200px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .rulebook-button-container{
+      margin: 0px auto;
+      padding-bottom: 20px;
+  }
+
+  .safe{
+      margin:0px;
+      display: inline-block;
+      width: 50%;
+  }
+
+  .unsafe{
+      margin:0px;
+      display: inline-block;
+      width: 50%;
+  }
+
+  .nav-buttons{
+      margin-top:10px;
+  }
+
+  .rulebook h2{
+      font-size:20px;
+  }
+}
   
