@@ -277,4 +277,16 @@ button {
       height: auto;
       padding:10px 20px;
   }
+
+  .test-container{
+      padding:30px;
+  }
+
+  .form .question-text{
+      font-size:20px;
+  }
+
+  input{
+      width:90%;
+  }
 }
