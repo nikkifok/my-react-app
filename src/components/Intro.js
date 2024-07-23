@@ -7,23 +7,23 @@ import Popup from "./Popup";
 
 const intros = [
     {
-        image: "/assets/BGP_1Intro.png",
+        image: "/assets/BGP_1Intro.jpg",
     },
 
     {
-        image: "/assets/BGP_2Intro.png",
+        image: "/assets/BGP_2Intro.jpg",
     },
 
     {
-        image: "/assets/BGP_3Intro.png",
+        image: "/assets/BGP_3Intro.jpg",
     },
 
     {
-        image: "/assets/BGP_4Intro.png",
+        image: "/assets/BGP_4Intro.jpg",
     },
 
     {
-        image: "/assets/BGP_5Intro.png",
+        image: "/assets/BGP_5Intro.jpg",
     },
 ];
 

@@ -8,7 +8,7 @@ import '../App.css';
 const ending = [
 
     {
-        image: "/assets/BGP_9End1.png",
+        image: "/assets/BGP_9End1.jpg",
     },
 ];
 
@@ -28,7 +28,17 @@ function End() {
 
     useEffect(() => {
         console.log(`Current Scene: ${currentScene}`);
-    }, [currentScene]);
+        // Push the current path to the history stack
+        window.history.pushState(null, document.title, window.location.href);
+        const handlePopState = (event) => {
+            event.preventDefault();
+            navigate("/Quiz", { replace: true });
+        };
+        window.addEventListener("popstate", handlePopState);
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
+    }, [currentScene, navigate]);
     
     const updateScene = (sceneIndex) => {
         setCurrentScene(sceneIndex);

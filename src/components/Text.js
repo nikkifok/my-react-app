@@ -27,23 +27,23 @@ const renderTime = ({ remainingTime }) => {
 const texts = [
 
     {
-        image: "/assets/BGP_7Text0.png",
+        image: "/assets/BGP_7Text0.jpg",
     },
 
     {
-        image: "/assets/BGP_7Text1.png",
+        image: "/assets/BGP_7Text1.jpg",
     },
 
     {
-        image: "/assets/BGP_7Text2.png",
+        image: "/assets/BGP_7Text2.jpg",
     },
 
     {
-        image: "/assets/BGP_7Text3.png",
+        image: "/assets/BGP_7Text3.jpg",
     },
 
     {
-        image: "/assets/BGP_7Text4.png",
+        image: "/assets/BGP_7Text4.jpg",
     },
 ];
 

@@ -28,27 +28,27 @@ const renderTime = ({ remainingTime }) => {
 const emails = [
 
     {
-        image: "/assets/BGP_6Email1.png",
+        image: "/assets/BGP_6Email1.jpg",
     },
 
     {
-        image: "/assets/BGP_6Email2.png",
+        image: "/assets/BGP_6Email2.jpg",
     },
 
     {
-        image: "/assets/BGP_6Email3.png",
+        image: "/assets/BGP_6Email3.jpg",
     },
 
     {
-        image: "/assets/BGP_6Email4.png",
+        image: "/assets/BGP_6Email4.jpg",
     },
 
     {
-        image: "/assets/BGP_6Email5.png",
+        image: "/assets/BGP_6Email5.jpg",
     },
 
     {
-        image: "/assets/BGP_6Email6.png",
+        image: "/assets/BGP_6Email6.jpg",
     },
 ];
 

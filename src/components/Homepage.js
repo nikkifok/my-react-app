@@ -16,7 +16,7 @@ function Homepage({onStartGame}) {
       <div className="homepage-container">
         <img
           className="homepage"
-          src="/assets/BGP_Title.png" 
+          src="/assets/BGP_Title.jpg" 
         alt="Homepage" 
       />
       <button className="invisible-btn" onClick={handleClick}>Start Game</button>
