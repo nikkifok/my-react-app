@@ -61,7 +61,7 @@ function Test({ question, options, image, onAnswer, type, inputType }) {
 
     const generateYearOptions = () => {
         const currentYear = new Date().getFullYear();
-        const startYear = currentYear - 100;
+        const startYear = currentYear - 80;
         const years = [];
         for (let i = startYear; i <= currentYear; i++) {
           years.push(i);
