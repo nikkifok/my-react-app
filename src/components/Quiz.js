@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from "./Popup";
+import CustomAlert from './CustomAlert';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { TouchBackend } from 'react-dnd-touch-backend';
@@ -13,7 +14,6 @@ const ItemTypes = {
   ITEM: 'item',
 };
 
-// Draggable item component
 const DraggableItem = ({ item, handleDrop }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.ITEM,
@@ -37,13 +37,13 @@ const DraggableItem = ({ item, handleDrop }) => {
         cursor: 'move',
       }}
       className="item"
+      onTouchStart={(e) => e.preventDefault()}
     >
       {item.content}
     </div>
   );
 };
 
-// Droppable category component
 const DroppableCategory = ({ category, children }) => {
   const [, drop] = useDrop(() => ({
     accept: ItemTypes.ITEM,
@@ -63,6 +63,8 @@ const DroppableCategory = ({ category, children }) => {
 
 const Quiz = () => {
   const [showEndPopup, setShowEndPopup] = useState(false);
+  const [showCustomAlert, setShowCustomAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
   const navigate = useNavigate();
 
   const [categories] = useState([
@@ -99,13 +101,18 @@ const Quiz = () => {
         return newCompletedItems;
       });
     } else {
-      alert('Incorrect category! Please try again.');
+      setAlertMessage('Incorrect category! Please try again.');
+      setShowCustomAlert(true);
     }
   };
 
   const handleCloseEndPopup = () => {
     setShowEndPopup(false);
     navigate("/end?scene=0", { replace: true });
+  };
+
+  const handleCloseCustomAlert = () => {
+    setShowCustomAlert(false);
   };
 
   return (
@@ -141,6 +148,12 @@ const Quiz = () => {
             onClose={handleCloseEndPopup}
           />
         )}
+        {showCustomAlert && (
+          <CustomAlert
+            message={alertMessage}
+            onClose={handleCloseCustomAlert}
+          />
+        )}
       </div>
     </DndProvider>
   );
@@ -155,6 +168,7 @@ const shuffleArray = (array) => {
   }
   return array;
 };
+
 
 
 
